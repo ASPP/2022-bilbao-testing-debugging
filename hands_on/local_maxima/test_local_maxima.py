@@ -23,5 +23,7 @@ def test_local_maxima_edges():
 
 
 def test_local_maxima_plateau():
-    raise Exception('not yet implemented')
- 
+    values = [1,2,2,1]
+    expected = [1,2]
+    maxima = local_maxima(values)
+    assert maxima == expected
