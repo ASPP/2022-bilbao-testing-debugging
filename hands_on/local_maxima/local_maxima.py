@@ -19,4 +19,12 @@ def local_maxima(x):
     Output:
     idx -- list of indices of the local maxima in x
     """
-    return []
+    n = len(x)
+
+    rv = [i for i in range(n)
+          if i==0 and x[i] > x[i+1]
+          or i==(n-1) and x[i-1] < x[i]
+          or 0<i<n and x[i-1] <= x[i] >= x[i+1]
+          ]
+
+    return rv
