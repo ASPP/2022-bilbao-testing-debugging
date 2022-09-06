@@ -1,22 +1,34 @@
 def local_maxima(x):
-    """Find local maxima of x.
 
-    Example:
-    >>> x = [1, 3, -2, 0, 2, 1]
-    >>> find_maxima(x)
-    [1, 4]
+    ret = []
 
-    If in a local maximum several elements have the same value,
-    return the left-most index.
-    Example:
-    >>> x = [1, 2, 2, 1]
-    >>> find_maxima(x)
-    [1]
+    pos = 0
+    incr = False
 
-    Input arguments:
-    x -- 1D list of real numbers
 
-    Output:
-    idx -- list of indices of the local maxima in x
-    """
-    return []
+    if x[0] >= x[1]:
+        ret.append(0)
+
+    while pos < len(x)-2:
+
+        while x[pos] < x[pos+1]:
+        #    print("comparing {} and {}".format(vet[pos], vet[pos+1]))
+            pos += 1
+            incr = True
+
+        if incr:
+            ret.append(pos)
+            incr = False
+
+        while x[pos] == x[pos+1]:
+            pos += 1
+        #print("appending pos {} to ret".format(pos))
+        
+        if x[pos] > x[pos+1]:
+            pos += 1
+   
+    if x[-2] < x[-1]:
+        #print("LAST COMPARISON: {} - {}".format(vet[-2], vet[-1]))
+        ret.append(len(x)-1)
+
+    return ret
